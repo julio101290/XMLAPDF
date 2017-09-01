@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="822e54f5-fcc8-4828-8199-08f4422e86cf">
+	<property name="ireport.zoom" value="1.1000000000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="362"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SQL" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Select Impuesto,tasa,importe from impuestosDatos"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * 
+	,ROUND(ValorUnitario*Cantidad,2) as ImporteTotalProducto
+	,f.Nombre as NombreReceptor
+	,f.Calle  as CalleReceptor
+	,f.NoInterior as NoInteriorReceptor
+	,f.NoExterior as NoExteriorReceptor
+	,f.Colonia as ColoniaReceptor 	
+	,f.CodigoPostal as CodigoPostalReceptor
+	,f.Localidad as LocalidadReceptor
+	,f.Estado as EstadoReceptor
+	,f.Municipio as MunicipioReceptor
+	,a.rutaqr
+from ComplementoDatos a
+     ,Comprobante b
+     ,Emisor c
+     ,ImpuestosDatos d
+     ,LugarExpedicionDatos e		
+     ,ReceptorDatos f	
+     ,Conceptos g
+Where
+    a.uuid=b.uuid
+    and a.uuid=b.uuid
+    and a.uuid=c.uuid
+    and a.uuid=d.uuid
+    and a.uuid=e.uuid
+    and a.uuid=f.uuid
+    and a.uuid=g.uuid
+
+    and b.uuid=c.uuid
+    and b.uuid=d.uuid
+    and b.uuid=e.uuid
+    and b.uuid=f.uuid
+    and b.uuid=g.uuid
+
+    and c.uuid=d.uuid
+    and c.uuid=e.uuid
+    and c.uuid=f.uuid
+    and c.uuid=g.uuid
+
+    and d.uuid=e.uuid
+    and d.uuid=f.uuid
+    and d.uuid=g.uuid
+   
+    and e.uuid=f.uuid
+    and e.uuid=g.uuid
+   
+    and f.uuid=g.uuid]]>
+	</queryString>
+	<field name="SelloSAt" class="java.lang.Object"/>
+	<field name="SelloCFD" class="java.lang.Object"/>
+	<field name="NoCertificadoSAT" class="java.lang.Object"/>
+	<field name="UUID" class="java.lang.Object"/>
+	<field name="FechaTimbrado" class="java.lang.Object"/>
+	<field name="RutaQR" class="java.lang.Object"/>
+	<field name="CantidadLetra" class="java.lang.Object"/>
+	<field name="Version" class="java.lang.Object"/>
+	<field name="Total" class="java.lang.Object"/>
+	<field name="TipoComprobante" class="java.lang.Object"/>
+	<field name="SubTotal" class="java.lang.Object"/>
+	<field name="Serie" class="java.lang.Object"/>
+	<field name="Sello" class="java.lang.Object"/>
+	<field name="NoCertificado" class="java.lang.Object"/>
+	<field name="MetodoDePago" class="java.lang.Object"/>
+	<field name="FormaPago" class="java.lang.Object"/>
+	<field name="Folio" class="java.lang.Object"/>
+	<field name="fecha" class="java.lang.Object"/>
+	<field name="Descuento" class="java.lang.Object"/>
+	<field name="CondicionesDePago" class="java.lang.Object"/>
+	<field name="TipoCambio" class="java.lang.Object"/>
+	<field name="numCTAPago" class="java.lang.Object"/>
+	<field name="Moneda" class="java.lang.Object"/>
+	<field name="LugarExpedicion" class="java.lang.Object"/>
+	<field name="RFC" class="java.lang.Object"/>
+	<field name="Nombre" class="java.lang.Object"/>
+	<field name="Pais" class="java.lang.Object"/>
+	<field name="NumeroExterior" class="java.lang.Object"/>
+	<field name="Municipio" class="java.lang.Object"/>
+	<field name="Localidad" class="java.lang.Object"/>
+	<field name="Estado" class="java.lang.Object"/>
+	<field name="CodigoPostal" class="java.lang.Object"/>
+	<field name="Calle" class="java.lang.Object"/>
+	<field name="Colonia" class="java.lang.Object"/>
+	<field name="Regimen" class="java.lang.Object"/>
+	<field name="Importe" class="java.lang.Object"/>
+	<field name="Impuesto" class="java.lang.Object"/>
+	<field name="Tasa" class="java.lang.Object"/>
+	<field name="PaisExpedicion" class="java.lang.Object"/>
+	<field name="NumeroInteriorExpedicion" class="java.lang.Object"/>
+	<field name="MunicipioExpedicion" class="java.lang.Object"/>
+	<field name="LocalidadExpedidoEn" class="java.lang.Object"/>
+	<field name="EstadoExpedidoEn" class="java.lang.Object"/>
+	<field name="CodigoPostalExpedidoEn" class="java.lang.Object"/>
+	<field name="CalleExpedidoEn" class="java.lang.Object"/>
+	<field name="ColoniaExpedidoEn" class="java.lang.Object"/>
+	<field name="NumeroExteriorExpedicion" class="java.lang.Object"/>
+	<field name="ReferenciaExpedicion" class="java.lang.Object"/>
+	<field name="RFCReceptor" class="java.lang.Object"/>
+	<field name="NoExterior" class="java.lang.Object"/>
+	<field name="NoInterior" class="java.lang.Object"/>
+	<field name="NoIdentificacion" class="java.lang.Object"/>
+	<field name="Descripcion" class="java.lang.Object"/>
+	<field name="Unidad" class="java.lang.Object"/>
+	<field name="ValorUnitario" class="java.lang.Object"/>
+	<field name="Cantidad" class="java.lang.Object"/>
+	<field name="ImporteTotalProducto" class="java.lang.Object"/>
+	<field name="NombreReceptor" class="java.lang.Object"/>
+	<field name="CalleReceptor" class="java.lang.Object"/>
+	<field name="NoInteriorReceptor" class="java.lang.Object"/>
+	<field name="NoExteriorReceptor" class="java.lang.Object"/>
+	<field name="ColoniaReceptor" class="java.lang.Object"/>
+	<field name="CodigoPostalReceptor" class="java.lang.Object"/>
+	<field name="LocalidadReceptor" class="java.lang.Object"/>
+	<field name="EstadoReceptor" class="java.lang.Object"/>
+	<field name="MunicipioReceptor" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="268" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="128" y="11" width="281" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="3a96b507-c4f0-4084-845d-64cc8a6761b5"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMISOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="128" y="71" width="281" height="20" uuid="b44371f1-b164-44f0-ac77-e2e970a0b941"/>
+				<box leftPadding="2">
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" "+$F{RFC}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="128" y="31" width="281" height="20" uuid="26fdee5b-02dc-42c2-8c46-4510f484ab3d"/>
+				<box leftPadding="2" rightPadding="0">
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" "+$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="128" y="51" width="281" height="20" uuid="0bfa1e0a-37b3-4cb2-a471-0be3f1c6e542"/>
+				<box leftPadding="6">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Calle}+ " " +$F{NumeroExterior} +" "+$F{Localidad}
++" CP "+$F{CodigoPostal}+" "+$F{Colonia}+" "+$F{Estado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="128" y="91" width="281" height="40" uuid="9c6c5280-1f95-426b-8c27-912205eb76ad"/>
+				<box leftPadding="2" rightPadding="0">
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textFieldExpression><![CDATA[""+$F{Regimen}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="439" y="11" width="116" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="3c3866ee-d305-466b-9d18-1a136c487717"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="439" y="51" width="116" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="043da460-3cb9-4eaf-a978-7e1ee4e05b20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="439" y="91" width="116" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="995f7a69-721b-41b2-ad9b-81de8f7802c1"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[METODO DE PAGO]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="439" y="31" width="116" height="20" uuid="c3e289f3-b875-41d9-b8e2-cdad31ff53b6"/>
+				<box leftPadding="2" rightPadding="0">
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" "+( $F{Serie}!="null" ? "" : ""+$F{Serie} ) +" "+$F{Folio}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="439" y="71" width="116" height="20" uuid="168b9264-e4ff-4201-9cc4-b2d7404ea0b8"/>
+				<box leftPadding="2" rightPadding="0">
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" "+$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="439" y="111" width="116" height="20" uuid="e09e28bb-8f53-4620-a7e2-4840859fea14"/>
+				<box leftPadding="2" rightPadding="0">
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" "+$F{MetodoDePago}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="146" width="281" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="7c3793fe-6106-4ec9-8e97-2f85cf7aa9e3"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECEPTOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="166" width="281" height="20" uuid="d49eb32a-f2e3-45b5-8afc-c3d385ce04f3"/>
+				<box leftPadding="5" rightPadding="5">
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{NombreReceptor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="186" width="281" height="20" uuid="8e0f341d-80d2-4f71-9262-b2650ffd57a6"/>
+				<box leftPadding="5" rightPadding="5">
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CalleReceptor} +" " +$F{NoExteriorReceptor} +" "+$F{ColoniaReceptor}
++" " +$F{CodigoPostalReceptor}+" "+$F{LocalidadReceptor}+ " "
++$F{MunicipioReceptor}+ " "+$F{EstadoReceptor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="206" width="281" height="20" uuid="12083d2f-850c-45dc-a51d-35736bb45518"/>
+				<box leftPadding="5" rightPadding="5">
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RFC:"+$F{RFCReceptor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="0" y="226" width="281" height="20" uuid="82734e89-d528-4e87-99a4-ec94dcc085d7"/>
+				<box leftPadding="5" rightPadding="5">
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CUENTA BANCARIA:"+$F{numCTAPago}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="293" y="146" width="262" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="cf75a464-03d3-404b-98af-f4024e00b003"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOMICILIO Y LUGAR DE EXPEDICION]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="293" y="166" width="262" height="60" uuid="7c8b7f8e-adec-4327-a3ce-e5dfe76dd0d9"/>
+				<box leftPadding="5" rightPadding="5">
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CalleExpedidoEn}+ " "+$F{NumeroExteriorExpedicion}
++" "+$F{ColoniaExpedidoEn}+ " "+ $F{CodigoPostalExpedidoEn}
++" "+$F{LocalidadExpedidoEn}+ " "+$F{MunicipioExpedicion}
++" " +$F{EstadoExpedidoEn}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="215" y="0" width="68" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="89d25609-2282-4980-8822-1d359a3d91e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="57" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="8394ef1d-4a4d-4f4b-91d0-1607190dbd52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="55" y="0" width="162" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="ceb6f9ad-5ca5-41e2-8e2b-94dd1f781aad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="281" y="0" width="85" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="c4ac9791-bfdc-4a75-892b-0da19eee3002"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="364" y="0" width="102" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="bef5a7b0-5bf1-4d44-a34c-ca8f5f2ae2b8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRECIO UNITARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="466" y="0" width="89" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="b5ec79f6-2729-4e4e-922f-0706e8892a10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="0" y="0" width="57" height="20" uuid="5976e4fe-aa23-4e89-a722-656733ed787d"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{NoIdentificacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="57" y="0" width="160" height="20" uuid="645472ca-d37a-4ecf-b41f-bf1172b73ce2"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Descripcion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="217" y="0" width="66" height="20" uuid="25eb6f66-c385-42ec-ad1a-5d65303d2886"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Unidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="283" y="0" width="83" height="20" uuid="1e321fe0-3071-478b-a0e0-6db1db4bf1ec"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="366" y="0" width="100" height="20" uuid="f35f7d27-4c53-425b-9234-c1707b80f908"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{ValorUnitario}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="466" y="0" width="89" height="20" uuid="b6cfbb5f-087c-4e02-8cfd-f7121943fbb2"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{ImporteTotalProducto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="368" splitType="Stretch">
+			<image>
+				<reportElement x="3" y="152" width="125" height="118" uuid="0efac67f-cc76-4ac5-ab94-57ac2cb1af43"/>
+				<imageExpression><![CDATA[""+$F{RutaQR}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="366" y="0" width="100" height="20" uuid="3c81a536-eacd-4f88-9e75-9d91c7b00452"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SubTotal:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="466" y="0" width="89" height="20" uuid="dec6689a-7402-4dab-ad60-e09c50615e99"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{SubTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="366" y="55" width="100" height="20" uuid="8f9b7e16-65d2-4c05-a352-a0aa2e4132bd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="466" y="55" width="89" height="20" uuid="9689d44b-e793-4dbd-9d62-41312ea14949"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="89" width="235" height="20" uuid="458fd9c3-b298-475b-933e-24c8df81261e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{FormaPago}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="112" width="150" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="a66041b6-1ccb-4d2e-a801-2a5cfa571abe"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FOLIO FISCAL]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="2" y="132" width="150" height="20" uuid="b6fd8d49-574e-4be6-b4df-dde76be5816c"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{UUID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="172" y="112" width="109" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="313287d8-cc59-473d-9496-fa8003a24eab"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DE CERTIFICACION]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="172" y="132" width="109" height="20" uuid="6307a31d-6979-4246-bb8a-6f2543491a01"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{FechaTimbrado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="293" y="112" width="116" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="1b4556f7-9bb9-4114-99b3-bcf666364eb4"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO CERTIFICADO SAT]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="293" y="132" width="116" height="20" uuid="84171fed-87be-45d2-8be0-47eb567d04df"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{NoCertificadoSAT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="439" y="112" width="116" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="3890aa12-3415-4abb-9ba7-a909d6621011"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO CERTIFICADO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="439" y="132" width="116" height="20" uuid="452ac528-f235-4876-b0d3-98a68d2102e1"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{NoCertificado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="152" y="167" width="403" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="d2b23d13-fb8d-4efd-8f27-be5b3d8a499e"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SELLO DIGITAL DEL EMISOR]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="152" y="187" width="403" height="20" isPrintWhenDetailOverflows="true" uuid="823d6f10-fdc8-4764-a52b-af406c725d6c"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{SelloCFD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="152" y="207" width="403" height="20" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="bf937132-9ec0-4d1f-8c8c-8b3dfe7a502f"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SELLO DIGITAL DEL SAT]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="FixRelativeToBottom" x="152" y="227" width="403" height="20" isPrintWhenDetailOverflows="true" uuid="9a980f7d-9fa7-420e-9e68-39d0bddad8ff"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{SelloSAt}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="0" y="270" width="555" height="20" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="a1e06b44-fbf7-4f5e-8fa7-57c318195f04"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CADENA ORIGINAL DEL TIMBRE]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="0" y="290" width="555" height="20" isPrintWhenDetailOverflows="true" uuid="e43e7a6a-74c6-4d21-bbf3-0e28db09d392"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["||"+$F{Version}
++"|"+$F{UUID}
++"|"+$F{FechaTimbrado}
++"|"+$F{SelloSAt}
++"|"+$F{NoCertificadoSAT}+"||"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="4" y="20" width="150" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="79bbf09a-d3d0-44ca-af5c-fde8d33d3484"/>
+				<box>
+					<topPen lineWidth="0.25" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE CON LETRA]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="4" y="40" width="150" height="20" uuid="eb528888-98ad-46ee-86ac-427d2f61ec7a"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{CantidadLetra}]]></textFieldExpression>
+			</textField>
+			<subreport runToBottom="true">
+				<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="366" y="20" width="189" height="35" uuid="73ea02fe-0060-4325-9dc7-90c9fd7ef509"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SQL">
+					<subreportParameterExpression><![CDATA[$P{SQL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[]]></connectionExpression>
+				<subreportExpression><![CDATA["/home/julio/RESPALDO/NetBeans/LeerXMLJ/src/ClasesDB/Rep_subreport1.jrxml"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

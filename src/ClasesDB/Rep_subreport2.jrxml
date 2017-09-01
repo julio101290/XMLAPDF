@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rep_subreport2" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a4be05f0-1184-46fe-824f-0d86b2b73afe">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     ImpuestosDatos.Importe AS ImpuestosDatos_Importe,
+     ImpuestosDatos.Impuesto AS ImpuestosDatos_Impuesto,
+     ImpuestosDatos.Tasa AS ImpuestosDatos_Tasa,
+     ImpuestosDatos.UUID AS ImpuestosDatos_UUID
+FROM
+     ImpuestosDatos ImpuestosDatos]]>
+	</queryString>
+	<field name="ImpuestosDatos_Importe" class="java.lang.Object"/>
+	<field name="ImpuestosDatos_Impuesto" class="java.lang.Object"/>
+	<field name="ImpuestosDatos_Tasa" class="java.lang.Object"/>
+	<field name="ImpuestosDatos_UUID" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="16" y="2" width="100" height="20" uuid="0bbebbc0-f2cd-4e03-a9b0-2f42ea600b8f"/>
+				<text><![CDATA[ImpuestosDatos_Importe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="2" width="100" height="20" uuid="74ba92ec-7c06-4046-9954-95142d3513e5"/>
+				<text><![CDATA[ImpuestosDatos_Impuesto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="16" y="18" width="100" height="20" uuid="f6a7cd09-ebbc-4bb5-a8ac-70b840321425"/>
+				<textFieldExpression><![CDATA[""+$F{ImpuestosDatos_Importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="29" width="100" height="20" uuid="2024e461-831d-4542-a7dd-f30350864bc2"/>
+				<textFieldExpression><![CDATA[""+$F{ImpuestosDatos_Impuesto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
